@@ -42,6 +42,11 @@ struct PartRepositoryImpl {
         
         return true
     }
+    
+    func deleteAll() async -> Bool {
+        await Database.shared.deleteAllParts()
+        return true
+    }
 }
 
 extension PartRepositoryImpl: PartRepository {}

@@ -25,6 +25,10 @@ actor Database {
         parts.removeAll { $0.id == id }
     }
     
+    func deleteAllParts() {
+        parts.removeAll()
+    }
+    
     func listAllWarehouses() -> [Warehouse] {
         return warehouses
     }
