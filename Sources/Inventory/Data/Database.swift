@@ -5,6 +5,8 @@
 //  Created by Asif Ashadullah on 2025-02-11.
 //
 
+import Foundation
+
 actor Database {
     static let shared = Database()
         

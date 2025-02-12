@@ -5,6 +5,8 @@
 //  Created by Asif Ashadullah on 2025-02-12.
 //
 
+import Foundation
+
 struct WarehouseRepositoryImpl {
     func create(name: String, location: Location, contact: String, manager: String?) async -> Warehouse? {
         guard let manager = manager else {

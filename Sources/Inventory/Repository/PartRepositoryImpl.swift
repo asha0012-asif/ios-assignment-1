@@ -5,6 +5,8 @@
 //  Created by Asif Ashadullah on 2025-02-11.
 //
 
+import Foundation
+
 struct PartRepositoryImpl {
     func create(name: String, category: PartCategory, size: Dimensions?, weight: Double?) async -> Part? {
         guard let size = size else {
