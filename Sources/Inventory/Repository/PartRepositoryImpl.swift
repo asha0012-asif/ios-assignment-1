@@ -33,6 +33,15 @@ struct PartRepositoryImpl {
         let allParts = await Database.shared.listAllParts()
         return allParts
     }
+    
+    func delete(id: UUID) async -> Bool {
+        let allParts = await Database.shared.listAllParts()
+        let foundPart = allParts.filter { $0.id == id }.first
+        
+        await Database.shared.deletePart(id: id)
+        
+        return true
+    }
 }
 
 extension PartRepositoryImpl: PartRepository {}
