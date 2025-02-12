@@ -36,4 +36,12 @@ actor Database {
     func addWarehouse(warehouse: Warehouse) {
         warehouses.append(warehouse)
     }
+    
+    func deleteWarehouse(id: UUID) {
+        warehouses.removeAll { $0.id == id }
+    }
+    
+    func deleteAllWarehouses() {
+        warehouses.removeAll()
+    }
 }

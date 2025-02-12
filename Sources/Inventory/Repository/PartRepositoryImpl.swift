@@ -34,6 +34,10 @@ struct PartRepositoryImpl {
         return allParts
     }
     
+    func update(id: UUID, name: String, category: PartCategory, size: Dimensions?, weight: Double?) async -> Part? {
+        #warning("Implement update logic here")
+    }
+    
     func delete(id: UUID) async -> Bool {
         let allParts = await Database.shared.listAllParts()
         let foundPart = allParts.filter { $0.id == id }.first
