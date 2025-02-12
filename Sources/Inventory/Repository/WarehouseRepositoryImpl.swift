@@ -21,8 +21,13 @@ struct WarehouseRepositoryImpl {
     func get(id: UUID) async -> Warehouse? {
         let allWarehouses = await Database.shared.listAllWarehouses()
         
-        let foundPart = allWarehouses.filter { $0.id == id }.first
-        return foundPart
+        let foundWarehouse = allWarehouses.filter { $0.id == id }.first
+        return foundWarehouse
+    }
+    
+    func list() async -> [Warehouse] {
+        let allWarehouses = await Database.shared.listAllWarehouses()
+        return allWarehouses
     }
 }
 
