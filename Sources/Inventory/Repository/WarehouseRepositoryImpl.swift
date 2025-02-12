@@ -17,6 +17,13 @@ struct WarehouseRepositoryImpl {
         
         return warehouse
     }
+    
+    func get(id: UUID) async -> Warehouse? {
+        let allWarehouses = await Database.shared.listAllWarehouses()
+        
+        let foundPart = allWarehouses.filter { $0.id == id }.first
+        return foundPart
+    }
 }
 
 extension WarehouseRepositoryImpl: WarehouseRepository {}
