@@ -21,6 +21,13 @@ struct PartRepositoryImpl {
         
         return part
     }
+    
+    func get(id: UUID) async -> Part? {
+        let allParts = await Database.shared.listAllParts()
+        
+        let foundPart = allParts.filter { $0.id == id }.first
+        return foundPart
+    }
 }
 
 extension PartRepositoryImpl: PartRepository {}
