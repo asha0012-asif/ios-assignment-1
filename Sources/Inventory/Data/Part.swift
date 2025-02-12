@@ -14,6 +14,14 @@ struct Part {
     let category: PartCategory
     let size: Dimensions
     let weight: Double
+    
+    init(name: String, category: PartCategory, size: Dimensions, weight: Double) {
+        self.id = UUID()
+        self.name = name
+        self.category = category
+        self.size = size
+        self.weight = weight
+    }
 }
 
 enum PartCategory {
