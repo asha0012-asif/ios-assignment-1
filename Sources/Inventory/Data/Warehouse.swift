@@ -24,3 +24,4 @@ struct Location {
 
 // Every data model you create MUST contain this line (DON'T forget to change the object name)
 extension Warehouse: ResponseEncodable, Decodable, Equatable {}
+extension Location: ResponseEncodable, Decodable, Equatable {}
