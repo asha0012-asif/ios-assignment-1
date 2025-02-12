@@ -6,7 +6,7 @@
 //
 
 struct PartRepositoryImpl {
-    func create(name: String, category: PartCategory, size: Dimensions?, weight: Double?) -> Part? {
+    func create(name: String, category: PartCategory, size: Dimensions?, weight: Double?) async -> Part? {
         guard let size = size else {
             return nil
         }
@@ -16,6 +16,9 @@ struct PartRepositoryImpl {
         }
         
         let part = Part(name: name, category: category, size: size, weight: weight)
+        
+        await Database.shared.addPart(part: part)
+        
         return part
     }
 }
