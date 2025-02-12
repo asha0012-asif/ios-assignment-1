@@ -29,6 +29,12 @@ struct WarehouseRepositoryImpl {
         let allWarehouses = await Database.shared.listAllWarehouses()
         return allWarehouses
     }
+    
+    func update(id: UUID, name: String, location: Location, contact: String, manager: String?) async -> Warehouse? {
+        #warning("Implement update logic here")
+    }
+    
+    
 }
 
 extension WarehouseRepositoryImpl: WarehouseRepository {}
