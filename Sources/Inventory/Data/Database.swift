@@ -21,6 +21,10 @@ actor Database {
         parts.append(part)
     }
     
+    func deletePart(id: UUID) {
+        parts.removeAll { $0.id == id }
+    }
+    
     func listAllWarehouses() -> [Warehouse] {
         return warehouses
     }
