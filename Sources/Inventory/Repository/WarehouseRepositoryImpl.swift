@@ -43,7 +43,10 @@ struct WarehouseRepositoryImpl {
         return true
     }
     
-    
+    func deleteAll() async -> Bool {
+        await Database.shared.deleteAllWarehouses()
+        return true
+    }
 }
 
 extension WarehouseRepositoryImpl: WarehouseRepository {}
