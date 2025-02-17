@@ -37,8 +37,14 @@ class Database {
         return false
     }
     
-    func deleteAllParts() {
+    func deleteAllParts() -> Bool {
         parts.removeAll()
+        
+        if parts.isEmpty {
+            return true
+        }
+        
+        return false
     }
     
     func addWarehouse(warehouse: Warehouse) {
