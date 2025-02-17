@@ -16,12 +16,16 @@ class Database {
     private var parts: [Part] = []
     private var warehouses: [Warehouse] = []
     
-    func listAllParts() -> [Part] {
-        return parts
-    }
-    
     func addPart(part: Part) {
         parts.append(part)
+    }
+    
+    func listPart(id: UUID) -> Part? {
+        return parts.filter { $0.id == id }.first ?? nil
+    }
+    
+    func listAllParts() -> [Part] {
+        return parts
     }
     
     func deletePart(id: UUID) {
