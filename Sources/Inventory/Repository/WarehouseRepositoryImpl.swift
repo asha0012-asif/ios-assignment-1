@@ -35,12 +35,8 @@ struct WarehouseRepositoryImpl {
     }
     
     func delete(id: UUID) async -> Bool {
-        let allWarehouses = await Database.shared.listAllWarehouses()
-        let foundWarehouse = allWarehouses.filter { $0.id == id }.first
-        
-        await Database.shared.deleteWarehouse(id: id)
-        
-        return true
+        let isWarehouseDeleted = await Database.shared.deleteWarehouse(id: id)
+        return isWarehouseDeleted ? true : false
     }
     
     func deleteAll() async -> Bool {

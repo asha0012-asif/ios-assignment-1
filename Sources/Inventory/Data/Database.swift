@@ -48,8 +48,15 @@ class Database {
         return warehouses
     }
     
-    func deleteWarehouse(id: UUID) {
-        warehouses.removeAll { $0.id == id }
+    func deleteWarehouse(id: UUID) -> Bool {
+        let foundWarehouse = warehouses.filter { $0.id == id }.first ?? nil
+        
+        if let foundWarehouse = foundWarehouse {
+            warehouses.removeAll { $0.id == id }
+            return true
+        }
+        
+        return false
     }
     
     func deleteAllWarehouses() {
