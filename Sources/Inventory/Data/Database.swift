@@ -64,7 +64,13 @@ class Database {
         return false
     }
     
-    func deleteAllWarehouses() {
+    func deleteAllWarehouses() -> Bool {
         warehouses.removeAll()
+        
+        if warehouses.isEmpty {
+            return true
+        }
+        
+        return false
     }
 }

@@ -40,8 +40,8 @@ struct WarehouseRepositoryImpl {
     }
     
     func deleteAll() async -> Bool {
-        await Database.shared.deleteAllWarehouses()
-        return true
+        let allWarehousesDeleted = await Database.shared.deleteAllWarehouses()
+        return allWarehousesDeleted
     }
 }
 
