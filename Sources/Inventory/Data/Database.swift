@@ -7,7 +7,8 @@
 
 import Foundation
 
-actor Database {
+@MainActor
+class Database {
     static let shared = Database()
         
     private init() {}
