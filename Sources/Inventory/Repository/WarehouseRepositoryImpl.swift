@@ -36,7 +36,7 @@ struct WarehouseRepositoryImpl {
     
     func delete(id: UUID) async -> Bool {
         let isWarehouseDeleted = await Database.shared.deleteWarehouse(id: id)
-        return isWarehouseDeleted ? true : false
+        return isWarehouseDeleted
     }
     
     func deleteAll() async -> Bool {

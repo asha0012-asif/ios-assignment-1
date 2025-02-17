@@ -10,8 +10,6 @@ import Foundation
 @MainActor
 class Database {
     static let shared = Database()
-        
-    private init() {}
     
     private var parts: [Part] = []
     private var warehouses: [Warehouse] = []
@@ -28,8 +26,15 @@ class Database {
         return parts
     }
     
-    func deletePart(id: UUID) {
-        parts.removeAll { $0.id == id }
+    func deletePart(id: UUID) -> Bool {
+        let foundPart = parts.filter { $0.id == id }.first ?? nil
+        
+        if let foundPart = foundPart {
+            parts.removeAll { $0.id == id }
+            return true
+        }
+        
+        return false
     }
     
     func deleteAllParts() {
