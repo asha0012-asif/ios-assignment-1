@@ -32,12 +32,16 @@ class Database {
         parts.removeAll()
     }
     
-    func listAllWarehouses() -> [Warehouse] {
-        return warehouses
-    }
-    
     func addWarehouse(warehouse: Warehouse) {
         warehouses.append(warehouse)
+    }
+    
+    func listWarehouse(id: UUID) -> Warehouse? {
+        return warehouses.filter { $0.id == id }.first ?? nil
+    }
+    
+    func listAllWarehouses() -> [Warehouse] {
+        return warehouses
     }
     
     func deleteWarehouse(id: UUID) {
