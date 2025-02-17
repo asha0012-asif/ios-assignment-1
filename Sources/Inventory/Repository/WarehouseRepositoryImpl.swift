@@ -13,7 +13,7 @@ struct WarehouseRepositoryImpl {
             return nil
         }
         
-        let warehouse = Warehouse(name: name, location: location, contact: contact, manager: manager)
+        let warehouse = Warehouse(name: name, location: location, contactNumber: contact, manager: manager)
         
         await Database.shared.addWarehouse(warehouse: warehouse)
         

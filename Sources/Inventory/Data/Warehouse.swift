@@ -12,14 +12,14 @@ struct Warehouse {
     let id: UUID
     let name: String
     let location: Location
-    let contact: String
+    let contactNumber: String
     let manager: String
     
-    init(name: String, location: Location, contact: String, manager: String) {
+    init(name: String, location: Location, contactNumber: String, manager: String) {
         self.id = UUID()
         self.name = name
         self.location = location
-        self.contact = contact
+        self.contactNumber = contactNumber
         self.manager = manager
     }
 }
