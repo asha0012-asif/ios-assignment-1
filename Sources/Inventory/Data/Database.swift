@@ -59,6 +59,15 @@ class Database {
         return warehouses
     }
     
+    func updateWarehouse(id: UUID, updatedWarehouse: Warehouse) -> Warehouse? {
+        if let index = warehouses.firstIndex(where: { $0.id == id }) {
+            warehouses[index] = updatedWarehouse
+            return warehouses[index]
+        }
+        
+        return nil
+    }
+    
     func deleteWarehouse(id: UUID) -> Bool {
         let foundWarehouse = warehouses.filter { $0.id == id }.first ?? nil
         

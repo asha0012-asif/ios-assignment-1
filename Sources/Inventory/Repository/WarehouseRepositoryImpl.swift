@@ -22,7 +22,7 @@ struct WarehouseRepositoryImpl {
     
     func get(id: UUID) async -> Warehouse? {
         let foundWarehouse = await Database.shared.listWarehouse(id: id)
-        return foundWarehouse ?? nil
+        return foundWarehouse
     }
     
     func list() async -> [Warehouse] {
@@ -31,7 +31,14 @@ struct WarehouseRepositoryImpl {
     }
     
     func update(id: UUID, name: String, location: Location, contact: String, manager: String?) async -> Warehouse? {
-        #warning("Implement update logic here")
+        guard let manager = manager else {
+            return nil
+        }
+        
+        let updatedWarehouse = Warehouse(name: name, location: location, contactNumber: contact, manager: manager)
+        
+        let result = await Database.shared.updateWarehouse(id: id, updatedWarehouse: updatedWarehouse)
+        return result
     }
     
     func delete(id: UUID) async -> Bool {
