@@ -26,6 +26,15 @@ class Database {
         return parts
     }
     
+    func updatePart(id: UUID, updatedPart: Part) -> Part? {
+        if let index = parts.firstIndex(where: { $0.id == id }) {
+            parts[index] = updatedPart
+            return parts[index]
+        }
+        
+        return nil
+    }
+    
     func deletePart(id: UUID) -> Bool {
         let foundPart = parts.filter { $0.id == id }.first ?? nil
         
