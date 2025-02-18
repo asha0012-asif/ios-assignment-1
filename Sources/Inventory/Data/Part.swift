@@ -24,7 +24,7 @@ struct Part {
     }
 }
 
-enum PartCategory {
+enum PartCategory: String {
     case engine
     case transmission
     case brakes
