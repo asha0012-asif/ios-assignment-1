@@ -8,11 +8,7 @@
 import Foundation
 
 struct WarehouseRepositoryImpl {
-    func create(name: String, location: Location, contact: String, manager: String?) async -> Warehouse? {
-        guard let manager = manager else {
-            return nil
-        }
-        
+    func create(name: String, location: Location, contact: String, manager: String?) async -> Warehouse? {        
         let id = UUID()
         let warehouse = Warehouse(id: id, name: name, location: location, contactNumber: contact, manager: manager)
         

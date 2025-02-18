@@ -15,12 +15,12 @@ struct Warehouse {
     let contactNumber: String
     let manager: String
     
-    init(id: UUID, name: String, location: Location, contactNumber: String, manager: String) {
+    init(id: UUID, name: String, location: Location, contactNumber: String, manager: String?) {
         self.id = id
         self.name = name
         self.location = location
         self.contactNumber = contactNumber
-        self.manager = manager
+        self.manager = manager ?? "UNASSIGNED"
     }
 }
 
