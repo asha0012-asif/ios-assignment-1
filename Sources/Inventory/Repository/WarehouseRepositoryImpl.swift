@@ -13,7 +13,8 @@ struct WarehouseRepositoryImpl {
             return nil
         }
         
-        let warehouse = Warehouse(name: name, location: location, contactNumber: contact, manager: manager)
+        let id = UUID()
+        let warehouse = Warehouse(id: id, name: name, location: location, contactNumber: contact, manager: manager)
         
         await Database.shared.addWarehouse(warehouse: warehouse)
         
@@ -35,7 +36,7 @@ struct WarehouseRepositoryImpl {
             return nil
         }
         
-        let updatedWarehouse = Warehouse(name: name, location: location, contactNumber: contact, manager: manager)
+        let updatedWarehouse = Warehouse(id: id, name: name, location: location, contactNumber: contact, manager: manager)
         
         let result = await Database.shared.updateWarehouse(id: id, updatedWarehouse: updatedWarehouse)
         return result
