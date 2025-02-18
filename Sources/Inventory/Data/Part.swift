@@ -15,8 +15,8 @@ struct Part {
     let size: Dimensions
     let weight: Double
     
-    init(name: String, category: PartCategory, size: Dimensions, weight: Double) {
-        self.id = UUID()
+    init(id: UUID, name: String, category: PartCategory, size: Dimensions, weight: Double) {
+        self.id = id
         self.name = name
         self.category = category
         self.size = size

@@ -17,7 +17,8 @@ struct PartRepositoryImpl {
             return nil
         }
         
-        let part = Part(name: name, category: category, size: size, weight: weight)
+        let id = UUID()
+        let part = Part(id: id, name: name, category: category, size: size, weight: weight)
         
         await Database.shared.addPart(part: part)
         
@@ -43,9 +44,9 @@ struct PartRepositoryImpl {
             return nil
         }
         
-        let updatedPart = Part(name: name, category: category, size: size, weight: weight)
+        let updatedPart = Part(id: id, name: name, category: category, size: size, weight: weight)
         
-        let result = await Database.shared.updatePart(id: id, updatedPart: updatedPart)
+        let result = await Database.shared.updatePart(updatedPart: updatedPart)
         return result
     }
     

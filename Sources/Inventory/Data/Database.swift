@@ -26,8 +26,8 @@ class Database {
         return parts
     }
     
-    func updatePart(id: UUID, updatedPart: Part) -> Part? {
-        if let index = parts.firstIndex(where: { $0.id == id }) {
+    func updatePart(updatedPart: Part) -> Part? {
+        if let index = parts.firstIndex(where: { $0.id == updatedPart.id }) {
             parts[index] = updatedPart
             return parts[index]
         }
