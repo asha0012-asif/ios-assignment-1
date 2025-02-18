@@ -38,12 +38,12 @@ class Database {
     func deletePart(id: UUID) -> Bool {
         let foundPart = parts.filter { $0.id == id }.first ?? nil
         
-        guard let foundPart else {
-            return false
+        if foundPart != nil {
+            parts.removeAll { $0.id == id }
+            return true
         }
         
-        parts.removeAll { $0.id == id }
-        return true
+        return false
     }
     
     func deleteAllParts() -> Bool {
@@ -80,12 +80,12 @@ class Database {
     func deleteWarehouse(id: UUID) -> Bool {
         let foundWarehouse = warehouses.filter { $0.id == id }.first ?? nil
         
-        guard let foundWarehouse else {
-            return false
+        if foundWarehouse != nil {
+            warehouses.removeAll { $0.id == id }
+            return true
         }
-    
-        warehouses.removeAll { $0.id == id }
-        return true
+        
+        return false
     }
     
     func deleteAllWarehouses() -> Bool {
