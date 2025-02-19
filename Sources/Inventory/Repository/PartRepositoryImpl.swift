@@ -25,14 +25,6 @@ struct PartRepositoryImpl {
     }
     
     func update(id: UUID, name: String, category: PartCategory, size: Dimensions?, weight: Double?) async -> Part? {
-        guard let size = size else {
-            return nil
-        }
-        
-        guard let weight = weight else {
-            return nil
-        }
-        
         let updatedPart = Part(id: id, name: name, category: category, size: size, weight: weight)
         return Database.shared.updatePart(updatedPart: updatedPart)
     }
