@@ -13,7 +13,6 @@ struct WarehouseRepositoryImpl {
         let warehouse = Warehouse(id: id, name: name, location: location, contactNumber: contact, manager: manager)
         
         Database.shared.add(element: warehouse)
-        
         return warehouse
     }
     
@@ -27,8 +26,7 @@ struct WarehouseRepositoryImpl {
     
     func update(id: UUID, name: String, location: Location, contact: String, manager: String?) async -> Warehouse? {
         let updatedWarehouse = Warehouse(id: id, name: name, location: location, contactNumber: contact, manager: manager)
-        
-        return Database.shared.updateWarehouse(updatedWarehouse: updatedWarehouse)
+        return Database.shared.update(element: updatedWarehouse)
     }
     
     func delete(id: UUID) async -> Bool {

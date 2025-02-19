@@ -25,9 +25,9 @@ final class Database: @unchecked Sendable {
         return parts
     }
     
-    func updatePart(updatedPart: Part) -> Part? {
-        if let index = parts.firstIndex(where: { $0.id == updatedPart.id }) {
-            parts[index] = updatedPart
+    func update(element: Part) -> Part? {
+        if let index = parts.firstIndex(where: { $0.id == element.id }) {
+            parts[index] = element
             return parts[index]
         }
         
@@ -67,9 +67,9 @@ final class Database: @unchecked Sendable {
         return warehouses
     }
     
-    func updateWarehouse(updatedWarehouse: Warehouse) -> Warehouse? {
-        if let index = warehouses.firstIndex(where: { $0.id == updatedWarehouse.id }) {
-            warehouses[index] = updatedWarehouse
+    func update(element: Warehouse) -> Warehouse? {
+        if let index = warehouses.firstIndex(where: { $0.id == element.id }) {
+            warehouses[index] = element
             return warehouses[index]
         }
         
