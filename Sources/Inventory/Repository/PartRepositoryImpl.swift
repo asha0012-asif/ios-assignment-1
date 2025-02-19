@@ -9,30 +9,19 @@ import Foundation
 
 struct PartRepositoryImpl {
     func create(name: String, category: PartCategory, size: Dimensions?, weight: Double?) async -> Part? {
-        guard let size = size else {
-            return nil
-        }
-        
-        guard let weight = weight else {
-            return nil
-        }
-        
         let id = UUID()
         let part = Part(id: id, name: name, category: category, size: size, weight: weight)
         
-        await Database.shared.add(element: part)
-        
+        Database.shared.add(element: part)
         return part
     }
     
     func get(id: UUID) async -> Part? {
-        let foundPart = await Database.shared.listPart(id: id)
-        return foundPart ?? nil
+        return Database.shared.listPart(id: id)
     }
     
     func list() async -> [Part] {
-        let allParts = await Database.shared.listAllParts()
-        return allParts
+        return Database.shared.listAllParts()
     }
     
     func update(id: UUID, name: String, category: PartCategory, size: Dimensions?, weight: Double?) async -> Part? {
@@ -45,19 +34,15 @@ struct PartRepositoryImpl {
         }
         
         let updatedPart = Part(id: id, name: name, category: category, size: size, weight: weight)
-        
-        let result = await Database.shared.updatePart(updatedPart: updatedPart)
-        return result
+        return Database.shared.updatePart(updatedPart: updatedPart)
     }
     
     func delete(id: UUID) async -> Bool {
-        let isPartDeleted = await Database.shared.deletePart(id: id)
-        return isPartDeleted
+        return Database.shared.deletePart(id: id)
     }
     
     func deleteAll() async -> Bool {
-        let allPartsDeleted = await Database.shared.deleteAllParts()
-        return allPartsDeleted
+        return Database.shared.deleteAllParts()
     }
 }
 

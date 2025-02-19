@@ -7,8 +7,7 @@
 
 import Foundation
 
-@MainActor
-class Database {
+final class Database: @unchecked Sendable {
     static let shared = Database()
     
     private var parts: [Part] = []
@@ -68,8 +67,8 @@ class Database {
         return warehouses
     }
     
-    func updateWarehouse(id: UUID, updatedWarehouse: Warehouse) -> Warehouse? {
-        if let index = warehouses.firstIndex(where: { $0.id == id }) {
+    func updateWarehouse(updatedWarehouse: Warehouse) -> Warehouse? {
+        if let index = warehouses.firstIndex(where: { $0.id == updatedWarehouse.id }) {
             warehouses[index] = updatedWarehouse
             return warehouses[index]
         }

@@ -12,16 +12,8 @@ struct Part {
     let id: UUID
     let name: String
     let category: PartCategory
-    let size: Dimensions
-    let weight: Double
-    
-    init(id: UUID, name: String, category: PartCategory, size: Dimensions, weight: Double) {
-        self.id = id
-        self.name = name
-        self.category = category
-        self.size = size
-        self.weight = weight
-    }
+    let size: Dimensions?
+    let weight: Double?
 }
 
 enum PartCategory: String {
@@ -29,6 +21,7 @@ enum PartCategory: String {
     case transmission
     case brakes
     case body
+    case exterior
 }
 
 struct Dimensions {

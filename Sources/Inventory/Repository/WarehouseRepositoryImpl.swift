@@ -12,40 +12,31 @@ struct WarehouseRepositoryImpl {
         let id = UUID()
         let warehouse = Warehouse(id: id, name: name, location: location, contactNumber: contact, manager: manager)
         
-        await Database.shared.add(element: warehouse)
+        Database.shared.add(element: warehouse)
         
         return warehouse
     }
     
     func get(id: UUID) async -> Warehouse? {
-        let foundWarehouse = await Database.shared.listWarehouse(id: id)
-        return foundWarehouse
+        return Database.shared.listWarehouse(id: id)
     }
     
     func list() async -> [Warehouse] {
-        let allWarehouses = await Database.shared.listAllWarehouses()
-        return allWarehouses
+        return Database.shared.listAllWarehouses()
     }
     
     func update(id: UUID, name: String, location: Location, contact: String, manager: String?) async -> Warehouse? {
-        guard let manager = manager else {
-            return nil
-        }
-        
         let updatedWarehouse = Warehouse(id: id, name: name, location: location, contactNumber: contact, manager: manager)
         
-        let result = await Database.shared.updateWarehouse(id: id, updatedWarehouse: updatedWarehouse)
-        return result
+        return Database.shared.updateWarehouse(updatedWarehouse: updatedWarehouse)
     }
     
     func delete(id: UUID) async -> Bool {
-        let isWarehouseDeleted = await Database.shared.deleteWarehouse(id: id)
-        return isWarehouseDeleted
+        return Database.shared.deleteWarehouse(id: id)
     }
     
     func deleteAll() async -> Bool {
-        let allWarehousesDeleted = await Database.shared.deleteAllWarehouses()
-        return allWarehousesDeleted
+        return Database.shared.deleteAllWarehouses()
     }
 }
 

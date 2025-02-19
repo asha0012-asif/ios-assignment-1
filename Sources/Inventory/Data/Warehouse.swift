@@ -13,21 +13,13 @@ struct Warehouse {
     let name: String
     let location: Location
     let contactNumber: String
-    let manager: String
-    
-    init(id: UUID, name: String, location: Location, contactNumber: String, manager: String?) {
-        self.id = id
-        self.name = name
-        self.location = location
-        self.contactNumber = contactNumber
-        self.manager = manager ?? "UNASSIGNED"
-    }
+    let manager: String?
 }
 
 struct Location {
-    let address: String
     let city: String
     let country: String
+    let address: String
 }
 
 // Every data model you create MUST contain this line (DON'T forget to change the object name)
