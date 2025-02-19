@@ -20,7 +20,7 @@ struct PartRepositoryImpl {
         let id = UUID()
         let part = Part(id: id, name: name, category: category, size: size, weight: weight)
         
-        await Database.shared.addPart(part: part)
+        await Database.shared.add(element: part)
         
         return part
     }

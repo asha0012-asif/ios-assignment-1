@@ -14,8 +14,8 @@ class Database {
     private var parts: [Part] = []
     private var warehouses: [Warehouse] = []
     
-    func addPart(part: Part) {
-        parts.append(part)
+    func add(element: Part) {
+        parts.append(element)
     }
     
     func listPart(id: UUID) -> Part? {
@@ -56,8 +56,8 @@ class Database {
         return false
     }
     
-    func addWarehouse(warehouse: Warehouse) {
-        warehouses.append(warehouse)
+    func add(element: Warehouse) {
+        warehouses.append(element)
     }
     
     func listWarehouse(id: UUID) -> Warehouse? {

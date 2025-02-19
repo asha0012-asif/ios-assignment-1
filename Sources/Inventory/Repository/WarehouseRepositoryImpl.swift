@@ -12,7 +12,7 @@ struct WarehouseRepositoryImpl {
         let id = UUID()
         let warehouse = Warehouse(id: id, name: name, location: location, contactNumber: contact, manager: manager)
         
-        await Database.shared.addWarehouse(warehouse: warehouse)
+        await Database.shared.add(element: warehouse)
         
         return warehouse
     }
