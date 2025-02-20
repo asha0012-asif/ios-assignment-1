@@ -1,4 +1,4 @@
-###### Assignment Status: 🚧 WIP
+###### Assignment Status: 🚧 Complete
 
 # Assignment 1: Inventory Management Design 
 
@@ -10,4 +10,3 @@ so far including Data Structures, OOP concepts and more. This doesn't include an
 ## Technologies Used
 
 -   **Language**: Swift
-
