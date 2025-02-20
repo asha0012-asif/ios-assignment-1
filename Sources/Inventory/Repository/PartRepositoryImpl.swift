@@ -30,7 +30,8 @@ struct PartRepositoryImpl {
     }
     
     func delete(id: UUID) async throws -> Bool {
-        return Database.shared.deletePart(id: id)
+        let foundPart = Database.shared.listPart(id: id)
+        return Database.shared.delete(foundPart: foundPart)
     }
     
     func deleteAll() async throws -> Bool {

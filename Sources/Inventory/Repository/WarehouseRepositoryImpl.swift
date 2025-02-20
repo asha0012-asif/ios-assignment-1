@@ -30,7 +30,8 @@ struct WarehouseRepositoryImpl {
     }
     
     func delete(id: UUID) async throws -> Bool {
-        return Database.shared.deleteWarehouse(id: id)
+        let foundWarehouse = Database.shared.listWarehouse(id: id)
+        return Database.shared.delete(foundWarehouse: foundWarehouse)
     }
     
     func deleteAll() async throws -> Bool {

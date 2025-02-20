@@ -34,11 +34,9 @@ final class Database: @unchecked Sendable {
         return nil
     }
     
-    func deletePart(id: UUID) -> Bool {
-        let foundPart = parts.filter { $0.id == id }.first ?? nil
-        
-        if foundPart != nil {
-            parts.removeAll { $0.id == id }
+    func delete(foundPart: Part?) -> Bool {
+        if let foundPart {
+            parts.removeAll { $0.id == foundPart.id }
             return true
         }
         
@@ -76,11 +74,9 @@ final class Database: @unchecked Sendable {
         return nil
     }
     
-    func deleteWarehouse(id: UUID) -> Bool {
-        let foundWarehouse = warehouses.filter { $0.id == id }.first ?? nil
-        
-        if foundWarehouse != nil {
-            warehouses.removeAll { $0.id == id }
+    func delete(foundWarehouse: Warehouse?) -> Bool {
+        if let foundWarehouse {
+            warehouses.removeAll { $0.id == foundWarehouse.id }
             return true
         }
         
