@@ -8,7 +8,7 @@
 import Foundation
 
 struct WarehouseRepositoryImpl {
-    func create(name: String, location: Location, contact: String, manager: String?) async -> Warehouse? {        
+    func create(name: String, location: Location, contact: String, manager: String?) async throws -> Warehouse? {
         let id = UUID()
         let warehouse = Warehouse(id: id, name: name, location: location, contactNumber: contact, manager: manager)
         
@@ -16,24 +16,24 @@ struct WarehouseRepositoryImpl {
         return warehouse
     }
     
-    func get(id: UUID) async -> Warehouse? {
+    func get(id: UUID) async throws -> Warehouse? {
         return Database.shared.listWarehouse(id: id)
     }
     
-    func list() async -> [Warehouse] {
+    func list() async throws -> [Warehouse] {
         return Database.shared.listAllWarehouses()
     }
     
-    func update(id: UUID, name: String, location: Location, contact: String, manager: String?) async -> Warehouse? {
+    func update(id: UUID, name: String, location: Location, contact: String, manager: String?) async throws -> Warehouse? {
         let updatedWarehouse = Warehouse(id: id, name: name, location: location, contactNumber: contact, manager: manager)
         return Database.shared.update(element: updatedWarehouse)
     }
     
-    func delete(id: UUID) async -> Bool {
+    func delete(id: UUID) async throws -> Bool {
         return Database.shared.deleteWarehouse(id: id)
     }
     
-    func deleteAll() async -> Bool {
+    func deleteAll() async throws -> Bool {
         return Database.shared.deleteAllWarehouses()
     }
 }
